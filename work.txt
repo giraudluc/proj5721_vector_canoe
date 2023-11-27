@@ -1,0 +1,9 @@
+
+
+myCanoe = Canoe()
+
+PowerSupplyVoltage.get()
+PowerSupplySwitchLevel.get()
+
+
+
