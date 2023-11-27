@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Tutorial - VectorCanoe</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Tutorial";
+        var mkdocs_page_input_path = "tutorial.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> VectorCanoe
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="tutorial.html">Tutorial</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="about.html">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VectorCanoe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Tutorial</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="tutorial">Tutorial</h1>
+<h2 id="youll-learn-how-to-get-started-using-the-vectorcanoe-python-module">You'll learn how to get started using the <strong><em>VectorCanoe</em></strong> Python module</h2>
+<p><img src="./assets/images/VectorCanoeOverview.png" width="800"></p>
+<p>The <strong><em>VectorCanoe.py</em></strong> Python module is dedicated to the control of the <strong><em>CANoe application</em></strong>.</p>
+<p>CANoe is a development and testing software tool from <em>Vector informatick</em>. 
+The CANoe automation is done via the win32com.client (COM automation) Python module.<br />
+This module can only be used on the Windows OS.</p>
+<p>The module contains the following classes:</p>
+<ul>
+<li>Canoe Main class to control the CANoe application.</li>
+<li>EnvironmentVariable Class to access an environment variable</li>
+<li>SystemVariable Class to access a simple system variable</li>
+<li>SystemArrayVariable Class to access an array system variable</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Vector CANoe application</li>
+<li>Python V3.9+ (<em>Software Validation</em> Python distribution)</li>
+<li>pywin32 Python package</li>
+</ul>
+<h2 id="installing-and-importing-the-module">Installing and importing the module</h2>
+<p>The module can be installed by copy in your working directory.</p>
+<pre><code class="language-python">import sys
+sys.path.append(&quot;.&quot;)
+from VectorCanoe import *
+</code></pre>
+<h2 id="user-functions-development">User functions development</h2>
+<p>It is possible to develop user functions based on the <strong><em>CANoe COM object hierarchy</em></strong>.<br />
+The <strong>getApplication()</strong> method of the <strong>Canoe</strong> class returns the entry points of the COM object hierarchy.</p>
+<p>The <strong><em>CANoe COM object hierarchy</em></strong> documentation is accessible via the Vector CANoe tool help menu.</p>
+<p><img src="./assets/images/CANoeCOMObjectHierarchy.png" width="800"></p>
+<pre><code class="language-python">myCanoe = Canoe()
+app = myCanoe.getApplication()
+</code></pre>
+<p>COM object hierarchy entry points directory:</p>
+<pre><code class="language-python">dir(app)
+['Bus',
+ 'CAPL',
+ 'CLSID',
+ 'ChannelMappingName',
+ 'Configuration',
+ 'Environment',
+ 'FullName',
+ 'GetBus',
+ 'GetNetworks',
+ 'GetSimulation',
+ 'Measurement',
+ 'Name',
+ 'Networks',
+ 'New',
+ 'Open',
+ 'OpenLink',
+ 'Parent',
+ 'Path', ]
+</code></pre>
+<h2 id="services-usage">Services usage</h2>
+<p>&#9755; Refer to the <strong><em>reference chapter</em></strong> for the detailed services usage.</p>
+<hr>
+
+<p>Example: Canoe instance and methods</p>
+<pre><code class="language-python">myCanoe = Canoe()
+# Check if measurement running
+myCanoe.isMeasurementRunning()
+False
+# Start the measurement
+myCanoe.startMeasurement()
+# Check if measurement running
+myCanoe.isMeasurementRunning()
+True
+myCanoe.stopMeasurement()
+# Check if measurement running
+myCanoe.isMeasurementRunning()
+False
+</code></pre>
+<pre><code class="language-python"># Write an user message in the CANoe console
+myCanoe.writeMessage(&quot;My message&quot;)
+</code></pre>
+<p><img src="./assets/images/writeMessage.png" width="300"></p>
+<pre><code class="language-python"># Clear the CANoe console
+myCanoe.ClearMessage()
+</code></pre>
+<pre><code class="language-python"># List the system variables belonging to the &quot;CAPLPythonGateway&quot; namespace
+myCanoe.listSystemVariables(&quot;CAPLPythonGateway&quot;)
+['add_return_updated', 'add_return', 'add_b', 'add_a']
+</code></pre>
+<p><img src="./assets/images/SystemVariables.png" width="250"></p>
+<pre><code class="language-python"># Add system variable file to the CANoe simulation
+myCanoe.addSystemVariablesFile(&quot;../Sources/CAPLPythonGateway.vsysvar&quot;)
+True
+</code></pre>
+<p><img src="./assets/images/addSystemVariablesFile.png" width="300"></p>
+<hr>
+
+<p>Example: SystemVariable instance and methods</p>
+<pre><code class="language-python">myCanoe = Canoe()
+# SystemVariable instance 
+mySystemVariable = SystemVariable(myCanoe, &quot;CAPLPythonGateway&quot;, 'add_b')
+# Read operation
+mySystemVariable.get()
+0
+# Write operation
+mySystemVariable.set(10)
+True
+# Read operation
+mySystemVariable.get()
+10
+</code></pre>
+<hr>
+
+<p>Example: SystemArrayVariable instance and methods</p>
+<pre><code class="language-python">myCanoe = Canoe()
+# SystemArrayVariable instance 
+mySystemArrayVariable = SystemArrayVariable(myCanoe, &quot;myNamespace&quot;, &quot;myArray&quot;)
+# Read operation
+mySystemArrayVariable.get()
+(0, 0, 0, 0, 0)
+# Write operation
+mySystemArrayVariable.set([1,2,3,4,5])
+True
+# Read operation
+mySystemArrayVariable.get()
+(1, 2, 3, 4, 5)
+</code></pre>
+<p><img src="./assets/images/SystemArrayVariable.png" width="300"></p>
+<hr>
+
+<p>Example: EnvironmentVariable instance and methods</p>
+<pre><code class="language-python">myCanoe = Canoe()
+# EnvironmentVariable instance 
+myEnv = EnvironmentVariable(myCanoe, &quot;myEnv&quot;)
+# Read operation
+myEnv.get()
+0
+# Write operation
+myEnv.set(55)
+True
+# Read operation
+myEnv.get()
+55
+</code></pre>
+<p><img src="./assets/images/EnvironmentVariable.png" width="300"></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>(&copy;) Valeo</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="reference.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

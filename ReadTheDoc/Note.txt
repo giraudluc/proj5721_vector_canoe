@@ -1,0 +1,4 @@
+mkdocs
+
+mkdocs build --no-directory-urls
+
