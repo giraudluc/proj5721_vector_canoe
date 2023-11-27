@@ -1,3 +1,8 @@
+---
+modified: 2023-11-27T15:34:24.809Z
+title: VectorCanoe.py
+---
+
 # VectorCanoe.py
 
 ## Overview
@@ -16,7 +21,7 @@ The module contains the following classes:
 
 ## Read the doc
 
-[Full documentation](https://script.google.com/a/macros/valeo.com/s/AKfycbwwLgRieOV2s2lOIPMg8b8UPxf3_VfH6NFybG6MRwVFoT60D-HaybTrjBJavMX3Q08MSA/exec)
+[Full documentation](#)
 
 ---
 Valeo (&copy;) Software Validation
